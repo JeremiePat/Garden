@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Formation du 10/01/2014</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="./css/reveal.css">
+    <link rel="stylesheet" href="./css/theme/default.css">
+    <link rel="stylesheet" href="./css/zenburn.css">
+
+    <!--[if lt IE 9]>
+<script src="./js/html5shiv.js"></script>
+<![endif]-->
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1 id="garden-">Garden++</h1>
+          <p>Les outils en ligne de commande qui vont bien.</p>
+        </section>
+        <section>
+          <h2 id="la-ligne-de-commande">La ligne de commande</h2>
+          <p>Il y a 50 ans dans un univers impitoyable…</p>
+        </section>
+        <section>
+          <h3 id="terminal-prompt-shell-k-zako-nbsp-">Terminal, prompt, shell… Kézako&nbsp;?</h3>
+          <p>
+            <img src="/img/prompt.png" alt="Le terminal sous Mac">
+          </p>
+        </section>
+        <section>
+          <h3 id="mais-quoi-a-sert-">Mais, à quoi ça sert?</h3>
+          <p class="fragment">Basiquement, à tout…</p>
+          <ol>
+            <li class="fragment">explorer, chercher et éditer des fichiers,</li>
+            <li class="fragment">executer des programmes,</li>
+            <li class="fragment">automatiser des taches,</li>
+            <li class="fragment">
+              <em>the sky is the limit…</em>
+            </li>
+          </ol>
+        </section>
+        <section>
+          <h3 id="les-principales-commandes">Les principales commandes</h3>
+          <p><code>cd</code>, <code>find</code>, <code>grep</code>, <code>ls</code>, <code>man</code>, <code>mkdir</code>, <code>pwd</code>, <code>rm</code>, <code>rmdir</code>, <code>sudo</code>, <code>touch</code>.</p>
+          <p>Mais aussi un peu de <code>nano</code> ou <code>vi</code> qui sont des programmes à part entière.</p>
+        </section>
+        <section>
+          <h3 id="lister-des-fichiers-ls">Lister des fichiers : ls</h3>
+          <pre><code class="language-bash"><span class="comment"># Lister tous les dossiers et fichiers du dossier courant</span>
+<span class="comment"># ou de la cible si elle est spécifiée.</span>
+$ ls (&lt;cible&gt; …)</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Lister avec un affichage détaillé.</span>
+$ ls <span class="operator">-l</span>
+<span class="comment"># Un combo qui va bien</span>
+$ ls -lhG</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Lister aussi les fichiers commençant par un point.</span>
+$ ls <span class="operator">-a</span></code></pre>
+          <pre><code class="language-bash"><span class="comment"># Lister tous les dossiers et fichiers enfants.</span>
+$ ls -<span class="number">1</span>R</code></pre>
+        </section>
+        <section>
+          <h3 id="trouver-de-l-aide-man">Trouver de l&#39;aide : man</h3>
+          <pre><code class="language-bash"><span class="comment"># Afficher les pages de manuels d'une commande</span>
+$ man &lt;commande&gt;</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Certains programmes récent prefèrent avoir leur aide personalisé</span>
+$ &lt;commande&gt; --help</code></pre>
+        </section>
+        <section>
+          <h3 id="se-ballader-dans-les-dossiers-cd">Se ballader dans les dossiers : cd</h3>
+          <pre><code class="language-bash"><span class="comment"># Se déplacer dans un dossier</span>
+$ <span class="built_in">cd</span> &lt;cible&gt;</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Et si on est perdu…</span>
+$ <span class="built_in">pwd</span></code></pre>
+        </section>
+        <section>
+          <h3 id="cr-er-des-dossiers-mkdir">Créer des dossiers : mkdir</h3>
+          <pre><code class="language-bash"><span class="comment"># Créer un dossier dans le dossier courant.</span>
+$ mkdir &lt;dossier&gt; …</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Créer un dossier et toute l'arboressence nécessaire si elle n'existe pas.</span>
+$ mkdir -p &lt;chemin&gt; …</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Et pour créer un fichier vide?</span>
+$ touch &lt;fichier&gt; …</code></pre>
+        </section>
+        <section>
+          <h3 id="supprimer-des-dossiers-rmdir">Supprimer des dossiers : rmdir</h3>
+          <pre><code class="language-bash"><span class="comment"># Supprimer un ou plusieurs dossiers vides</span>
+$ rmdir &lt;dossier&gt; …</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Supprimer tous les dossiers vide d'un chemin</span>
+$ rmdir -p &lt;chemin&gt; …</code></pre>
+          <p>Mais il y a mieux…
+            <span class="fragment">(｀∀´)Ψ</span>
+          </p>
+        </section>
+        <section>
+          <h3 id="supprimer-des-fichier-rm">Supprimer des fichier : rm</h3>
+          <pre><code class="language-bash"><span class="comment"># Supprimer un ou plusieurs fichiers mais pas les dossiers.</span>
+$ rm &lt;fichier&gt; …</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Supprimer tous les fichiers ET dossiers des chemins spécifiés.</span>
+$ rm -r &lt;chemin&gt; …</code></pre>
+          <pre><code class="language-bash"><span class="comment"># La même chose, mais sans demander de confirmation de suppression.</span>
+$ rm -rf &lt;chemin&gt; …</code></pre>
+          <pre><code class="language-bash"><span class="comment"># La même chose, mais en demandant systematiquement une confirmation.</span>
+$ rm -ri &lt;chemin&gt; …</code></pre>
+          <div class="fragment">
+            <p>Et JAMAIS tu ne fera ça :</p>
+            <pre><code class="language-bash"><span class="comment"># Aussi connu sous le nom de &quot;Barillette&quot; chez Clever Age :)</span>
+$ rm -rf /</code></pre>
+          </div>
+        </section>
+        <section>
+          <h3 id="chercher-des-fichiers-1-2-find">Chercher des fichiers (1/2) : find</h3>
+          <pre><code class="language-bash"><span class="comment"># Chercher un fichier par son nom dans un dossier et ses sous-dossiers</span>
+$ find &lt;dossier&gt; -iname &lt;fichier&gt;</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Chercher tous les fichiers modifiés depuis la date donnée</span>
+$ find &lt;dossier&gt; -newermt &lt;date&gt;</code></pre>
+        </section>
+        <section>
+          <h3 id="chercher-des-fichiers-2-2-grep">Chercher des fichiers (2/2) : grep</h3>
+          <pre><code class="language-bash"><span class="comment"># Chercher à l'interieur d'un fichier</span>
+$ grep &lt;recherche&gt; &lt;fichier&gt; …</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Faire une recherche insensible à la casse</span>
+$ grep -i &lt;recherche&gt; &lt;fichier&gt; …</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Afficher le numéro de la ligne ou se trouve le resultat de recherche</span>
+$ grep -n &lt;recherche&gt; &lt;fichier&gt; …</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Étend la recherche à tous les sous-dossiers et leurs fichiers</span>
+$ grep -R &lt;recherche&gt; &lt;fichier&gt; …</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Pour n'afficher que les noms de fichiers correspondant à la recherche</span>
+$ grep <span class="operator">-l</span> &lt;recherche&gt; &lt;fichier&gt; …</code></pre>
+        </section>
+        <section>
+          <h3 id="devenir-super-h-ro-ou-vilain-">Devenir super héro (ou vilain)</h3>
+          <pre><code class="language-bash"><span class="comment"># Executer une commande en mode super utilisateur</span>
+$ <span class="built_in">sudo</span> &lt;commande&gt;</code></pre>
+          <p>Attention, à chaque fois que vous utilisez <code>sudo</code>, vous prenez le risque de faire une grosse connerie.</p>
+        </section>
+        <section>
+          <h3 id="motifs-et-caract-res-sp-ciaux">Motifs et caractères spéciaux</h3>
+          <ul>
+            <li><code>~</code> : représente le dossier de l&#39;utilisateur courant</li>
+            <li><code>*</code> : représente un jocker multiple ([0,n] caractères) dans un chemin ou un nom de fichier</li>
+            <li><code>?</code> : représente un jocker simple ([0,1] caractère) dans un chemin ou un nom de fichier</li>
+            <li><code>{a,b,c,…}</code>, <code>[a,b,c,…]</code> et <code>[abc…]</code> : représentent &#39;a&#39; ou &#39;b&#39; ou &#39;c&#39;, etc.</li>
+            <li><code>{a..z}</code> et <code>[a-z]</code> : repréentent n&#39;importe quelle lettre entre &#39;a&#39; et &#39;z&#39;.</li>
+          </ul>
+        </section>
+        <section>
+          <h3 id="des-racourcis-clavier-connaitre">Des racourcis clavier à connaitre</h3>
+          <ul>
+            <li>↑ (up) et ↓ (down) permettent de se déplacer dans l&#39;historique des commandes.</li>
+            <li>⇥ (tabulation) permet de faire de l&#39;autocomplétion.</li>
+            <li><code>CTRL + C</code> : permet d&#39;interrompre une commande.</li>
+          </ul>
+          <hr>
+          <p>Et pour aller (beaucoup) plus loin :</p>
+          <p>
+            <a href="http://fr.slideshare.net/keithrbennett/unix-command-line-productivity-tips">http://fr.slideshare.net/keithrbennett/unix-command-line-productivity-tips</a>
+          </p>
+        </section>
+        <section>
+          <h2 id="extra-ball-">Extra ball!</h2>
+          <h3 id="guide-de-survi-pour-vi">Guide de survi pour Vi</h3>
+          <ul>
+            <li><code>i</code> : Passer en mode insertion</li>
+            <li><code>ESC</code> : Sortir du mode insertion</li>
+            <li><code>:w</code> : Enregistrer les modifications</li>
+            <li><code>:q</code> : Quitter Vi</li>
+            <li><code>:x</code> ou <code>:wq</code> : Enregistrer et quitter</li>
+            <li><code>:q!</code> : Quitter sans enregistrer les modifications</li>
+          </ul>
+        </section>
+        <section>
+          <h2 id="git">GIT</h2>
+          <p>SVN ? C&#39;est d&#39;la merde…</p>
+        </section>
+        <section>
+          <h3 id="un-peu-de-th-orie">Un peu de théorie</h3>
+          <p>GIT est un système de versionnement
+            <strong>distribué</strong>.</p>
+          <p>
+            <img src="/img/git-basic.png" alt="Architecture GIT">
+          </p>
+        </section>
+        <section>
+          <h3 id="structure-d-un-d-pot-git">Structure d&#39;un dépot GIT</h3>
+          <ul>
+            <li>L&#39;espace de travail (workspace)</li>
+            <li>L&#39;index (stage)</li>
+            <li>Le dépot (repository)</li>
+            <li>La remise (stash)</li>
+          </ul>
+        </section>
+        <section>
+          <h3 id="workflow-de-base">Workflow de base</h3>
+          <p>
+            <img src="/img/git-basic-workflow.png" alt="Basic workflow">
+          </p>
+          <p>La « cheatsheet » qui va bien :
+            <br>
+            <a href="http://ndpsoftware.com/git-cheatsheet.html">http://ndpsoftware.com/git-cheatsheet.html</a>
+          </p>
+        </section>
+        <section>
+          <h3 id="installation-et-configuration">Installation et configuration</h3>
+          <ul>
+            <li>
+              <a href="http://git-scm.com/downloads">http://git-scm.com/downloads</a>
+            </li>
+            <li>Une fois installé, la bonne pratique:</li>
+          </ul>
+          <pre><code class="language-bash">$ git config --global user.name &lt;nom&gt;
+$ git config --global user.email &lt;email&gt;</code></pre>
+          <ul>
+            <li>Pour aller plus loin :
+              <a href="http://www.git-attitude.fr/2013/04/03/configuration-git/">http://www.git-attitude.fr/2013/04/03/configuration-git/</a>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3 id="obtenir-de-l-aide-sur-git">Obtenir de l&#39;aide sur GIT</h3>
+          <ul>
+            <li>Demandez à vos collègues (et ouais…)</li>
+            <li>La documentation officiel :
+              <a href="http://git-scm.com/documentation">http://git-scm.com/documentation</a>
+            </li>
+            <li>Et bien sur directement en ligne de commande:</li>
+          </ul>
+          <pre><code class="language-bash">$ git <span class="built_in">help</span> (&lt;commande&gt;)</code></pre>
+        </section>
+        <section>
+          <h3 id="initialiser-un-d-pot">Initialiser un dépot</h3>
+          <pre><code class="language-bash"><span class="comment"># Initialise un depot local dans le dossier courrant ou le dossier ciblé</span>
+$ git init (&lt;dossier&gt;)</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Clone un dépot distant et lie le depot local à celui-ci</span>
+$ git clone &lt;url&gt; (&lt;dossier&gt;)</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Liéer un dépot distant après coup</span>
+<span class="comment"># Par convention, le nom du premier dépot distant est "origine"</span>
+$ git remote add &lt;nom&gt; &lt;url&gt;</code></pre>
+        </section>
+        <section>
+          <h3 id="connaitre-l-tat-du-d-pot-1-2-">Connaitre l&#39;état du dépot (1/2)</h3>
+          <pre><code class="language-bash"><span class="comment"># Donne l'état courant du dépot</span>
+$ git status</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Liste le détail des commits du dépot</span>
+<span class="comment"># (avec plein d'option de formatage)</span>
+$ git log (--graph --oneline)</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Montre les différences entre le workspace et le stage</span>
+$ git diff
+<span class="comment"># Montre les différences entre le workspace et un commit</span>
+$ git diff &lt;commit&gt;
+<span class="comment"># Montre les différence entre deux commits</span>
+$ git diff &lt;commit&gt; &lt;commit&gt;</code></pre>
+        </section>
+        <section>
+          <h3 id="connaitre-l-tat-du-d-pot-2-2-">Connaitre l&#39;état du dépot (2/2)</h3>
+          <p>GIT permet également de personaliser son prompt pour avoir des infos pratiques d&#39;un coup d&#39;oeil. Par défaut vous devriez avoir :</p>
+          <pre><code class="language-bash"><span class="comment"># Le dépot est à jour et vous êtes sur la branche "master"</span>
+(master)$
+<span class="comment"># Le workspace contient des fichiers non suivi</span>
+(master %)$
+<span class="comment"># Le workspace contient des modifications</span>
+(master *)$
+<span class="comment"># Le stage contient des modifications</span>
+(master +)$</code></pre>
+          <p>Si votre prompt n&#39;est pas configuré par défaut, allez lire :
+            <a href="http://www.git-attitude.fr/2013/05/22/prompt-git-qui-dechire/">http://www.git-attitude.fr/2013/05/22/prompt-git-qui-dechire/</a>
+          </p>
+        </section>
+        <section>
+          <h3 id="enregistrer-des-changements-1-2-">Enregistrer des changements (1/2)</h3>
+          <pre><code class="language-bash"><span class="comment"># Ajouter les changements d'un fichier au stage</span>
+<span class="comment"># NOTE: Obligatoire la première foi que l'on veut suivre un fichier</span>
+$ git add &lt;fichier&gt;
+<span class="comment"># Pour tout ajouter d'un coup (aka "mode bourrin")</span>
+$ git add .</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Supprimer les changements du stage</span>
+$ git reset (&lt;fichier&gt;)
+<span class="comment"># Supprimer les changements du stage ET du workspace</span>
+$ git reset --hard</code></pre>
+        </section>
+        <section>
+          <h3 id="enregistrer-des-changements-2-2-">Enregistrer des changements (2/2)</h3>
+          <pre><code class="language-bash"><span class="comment"># Renommer un fichier ou dossier</span>
+$ git mv &lt;ancien&gt; &lt;nouveau&gt;
+<span class="comment"># Supprimer un fichier</span>
+$ git rm &lt;fichier&gt;</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Enregistrer les changements de l'index dans le repository</span>
+$ git commit -m &lt;message de commit&gt;
+<span class="comment"># Enregistrer tous les changement du workspace directement dans le</span>
+<span class="comment"># repository sans passer par le stage (sauf pour les nouveaux fichiers)</span>
+$ git commit <span class="operator">-a</span> -m &lt;message de commit&gt;</code></pre>
+        </section>
+        <section>
+          <h3 id="synchroniser-les-d-pots">Synchroniser les dépots</h3>
+          <pre><code class="language-bash"><span class="comment"># Envoyer les modifications locales d'une branche sur un dépot distant</span>
+$ git push &lt;depot&gt; &lt;branche&gt;</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Récupérer et fusionner les infos d'une branche du dépot distant</span>
+$ git pull &lt;depot&gt; &lt;branche&gt;</code></pre>
+          <p>La première fois que vous récupérez une branche, pensez aussi à faire un checkout :</p>
+          <pre><code class="language-bash">$ git checkout &lt;branche&gt;</code></pre>
+        </section>
+        <section>
+          <h3 id="g-rer-les-branches">Gérer les branches</h3>
+          <pre><code class="language-bash"><span class="comment"># Créer une branche</span>
+$ git branch &lt;nom&gt;
+<span class="comment"># Supprimer une branche</span>
+$ git branch <span class="operator">-d</span> &lt;nom&gt;</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Changer de branche</span>
+$ git checkout &lt;branche&gt;</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Fusionner la branche selectionnée dans la branche courante</span>
+$ git merge &lt;branche&gt;</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Changer le point de divergence de la branche courante</span>
+<span class="comment"># sur la tête (HEAD) de la branche choisie</span>
+$ git rebase &lt;branche&gt;</code></pre>
+        </section>
+        <section>
+          <h3 id="g-rer-les-conflit-1-2-">Gérer les conflit (1/2)</h3>
+          <p>Le mieux est d&#39;éviter les conflits. Quelques bonnes pratiques:</p>
+          <ul>
+            <li>Avant de faire une fusion, assurez vous d&#39;avoir une workspace et un stage propre. Au besoin, stocker vos changements en cour dans le stash.</li>
+            <li>Si vous travaillez à plusieurs en même temps sur un projet, ne travaillez pas directement sur la branche « master ».</li>
+          </ul>
+        </section>
+        <section>
+          <h3 id="g-rer-les-conflit-2-2-">Gérer les conflit (2/2)</h3>
+          <pre><code class="language-bash"><span class="comment"># Savoir quels outils de résolution de conflit sont disponible</span>
+$ git mergetool --tool-help
+<span class="comment"># Lancer un outil de résolution de conflit</span>
+$ git mergetool -t &lt;outil&gt;</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Annuler une fusion conflictuelle</span>
+$ git merge --abort</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Reprendre un rebase après la résolution des conflits</span>
+$ git rebase --continue
+<span class="comment"># Annuler un rebase avec conflit</span>
+$ git rebase --abort</code></pre>
+        </section>
+        <section>
+          <h3 id="stocker-des-changements">Stocker des changements</h3>
+          <pre><code class="language-bash"><span class="comment"># Stocker un état</span>
+$ git stash</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Appliquer un état stocké</span>
+$ git stash apply (&lt;id&gt;)</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Supprimer un état stocké</span>
+$ git stash drop (&lt;id&gt;)</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Les deux précédent en une commande</span>
+$ git stash pop (&lt;id&gt;)</code></pre>
+        </section>
+        <section>
+          <h3 id="quelques-trucs-savoir">Quelques trucs à savoir</h3>
+          <p>GIT est grandement configurable pour vos besoins ou ceux du projet. Il y a deux fichiers à connaitre pour ça:</p>
+          <ul>
+            <li><code>.gitignore</code> : Il se place à la racine du projet et permet de spécifier les fichiers et dossiers qui doivent être ignoré par GIT</li>
+            <li><code>.gitconfig</code> : Il se place à la racine de votre répertoire personnel et permet de configurer GIT selon vos besoins</li>
+          </ul>
+        </section>
+        <section>
+          <h3 id="interface-graphique">Interface graphique</h3>
+          <p>La ligne de commande c&#39;est bien puissant, mais au quotidien une interface graphique c&#39;est pas mal:</p>
+          <p>
+            <img src="/img/sourcetree.png" alt="SourceTree">
+          </p>
+          <p>
+            <a href="http://www.sourcetreeapp.com">http://www.sourcetreeapp.com</a>
+          </p>
+        </section>
+        <section>
+          <h2 id="autres-outils-indispensables">AUTRES OUTILS INDISPENSABLES</h2>
+          <p>« Enlarge your productivity! »</p>
+        </section>
+        <section>
+          <h3 id="d-abord-les-bases">D&#39;abord, les bases</h3>
+          <ul>
+            <li>Ruby
+              <ul>
+                <li>
+                  <a href="https://www.ruby-lang.org/fr/">https://www.ruby-lang.org/fr/</a>
+                </li>
+                <li>
+                  <a href="http://rubygems.org/">http://rubygems.org/</a>
+                </li>
+              </ul>
+            </li>
+            <li>NodeJS
+              <ul>
+                <li>
+                  <a href="http://nodejs.org/">http://nodejs.org/</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3 id="compass-ou-sass-">Compass (ou Sass)</h3>
+          <p>C&#39;est une Gem Ruby qui s&#39;intalle très facilement :</p>
+          <pre><code class="language-bash">$ gem install compass</code></pre>
+          <p>Et s&#39;utilise tout aussi facilement :</p>
+          <pre><code class="language-bash"><span class="comment"># Compiler un projet</span>
+$ compass compile</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Compiler à chaque changement</span>
+$ compass watch</code></pre>
+        </section>
+        <section>
+          <h3 id="config-rb">config.rb</h3>
+          <p>C&#39;est le fichier de configuration du projet Sass qui doit être à la racine de votre projet.</p>
+          <pre><code class="language-ruby"><span class="comment"># Racine HTTP à utiliser pour générer les chemins</span>
+http_path = <span class="string">"/"</span>
+<span class="comment"># Dossiers ou doivent êtres les différents fichiers du projet</span>
+sass_dir = <span class="string">"src/sass"</span>
+css_dir = <span class="string">"build/css"</span>
+images_dir = <span class="string">"build/img"</span>
+javascripts_dir = <span class="string">"build/js"</span>
+<span class="comment"># Spécifie le format de la CSS généré</span>
+<span class="comment"># output_style = :expanded or :nested or :compact or :compressed</span>
+output_style = <span class="symbol">:expanded</span></code></pre>
+          <p>Et on pense à le versionner avec le reste du projet</p>
+          <pre><code class="language-bash">$ git add config.rb</code></pre>
+        </section>
+        <section>
+          <h3 id="le-probl-me">Le problème</h3>
+          <p>« Rhaaaa! Mais putain, c&#39;est pas la même version de Compass qu&#39;il utilise ce con. »</p>
+        </section>
+        <section>
+          <h3 id="la-solution">La solution</h3>
+          <p>Bundler est un outils qui permet de mettre à jour ses Gem Ruby dans la versions que l&#39;on souhaite.</p>
+          <p>
+            <a href="http://bundler.io">http://bundler.io</a>
+          </p>
+        </section>
+        <section>
+          <h3 id="utiliser-bundler">Utiliser Bundler</h3>
+          <p>Installer bundler</p>
+          <pre><code class="language-bash">$ gem install bundler</code></pre>
+          <p>Créez un fichier <code>Gemfile</code> à la racine de votre projet</p>
+          <pre><code>source &#39;https://rubygems.org&#39;
+gem &#39;compass&#39;, &#39;0.12.2&#39;</code></pre>
+          <p>Mettre à jour son environnement</p>
+          <pre><code class="language-bash">$ bundle install</code></pre>
+          <p>Pensez à versionner les fichiers avec le projet</p>
+          <pre><code class="language-bash">$ git add Gemfile Gemfile.lock</code></pre>
+          <p>Et pour l&#39;utiliser</p>
+          <pre><code class="language-bash">$ bundle <span class="keyword">exec</span> compass compile</code></pre>
+        </section>
+        <section>
+          <h3 id="le-probl-me">Le problème</h3>
+          <p>« Oh non… il faut ENCORE que je (mettre un truc chiant et répétitif à faire ici) ! »</p>
+        </section>
+        <section>
+          <h3 id="la-solution">La solution</h3>
+          <p>Grunt est un outils d&#39;automatisation de taches spécialement fait pour les developpeurs Web.</p>
+          <p>
+            <a href="http://gruntjs.com">http://gruntjs.com</a>
+          </p>
+        </section>
+        <section>
+          <h3 id="pr-ambule">Préambule</h3>
+          <p>Grunt est basé sur NodeJS. Pour pouvoir l&#39;utiliser il faut donc avoir intallé NodeJS et installer le module <code>grunt-cli</code> au niveau du système.</p>
+          <pre><code class="language-bash">$ <span class="built_in">sudo</span> npm install -g grunt-cli</code></pre>
+        </section>
+        <section>
+          <h3 id="utiliser-grunt">Utiliser Grunt</h3>
+          <p>Pour utiliser Grunt, vous devez créer 2 fichiers à la racine de votre projet :</p>
+          <ul>
+            <li><code>package.json</code> : Il contient la liste des module NodeJS à utiliser sur ce projet et leur version.</li>
+            <li><code>Gruntfile.js</code> : Il contient toute la configuration de grunt pour ce projet</li>
+          </ul>
+        </section>
+        <section>
+          <h3 id="package-json">package.json</h3>
+          <p>Ce fichier permettra de garantir que tout le monde utilisera les mêmes modules NodeJS</p>
+          <pre><code class="language-json">{
+  "<span class="attribute">name</span>": <span class="value"><span class="string">"mon-projet"</span></span>,
+  "<span class="attribute">author</span>": <span class="value"><span class="string">"Jeremie Patonnier"</span></span>,
+  "<span class="attribute">version</span>": <span class="value"><span class="string">"0.0.1"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Dependance pour le projet"</span></span>,
+  "<span class="attribute">devDependencies</span>": <span class="value">{}
+</span>}</code></pre>
+          <p>Pour que tout le monde en bénéficie, pensez à le versionner dans le projet :</p>
+          <pre><code class="language-bash">$ git add package.json</code></pre>
+        </section>
+        <section>
+          <h3 id="grunt-et-plugins">Grunt et plugins</h3>
+          <p>Avant toute chose, il faut installer Grunt lui même et les plugins que l&#39;on va utiliser. Ce sont tous des modules NodeJS, il suffira donc avec le Terminal de se placer dans le dossier du projet, puis :</p>
+          <pre><code class="language-bash"><span class="comment"># Installer Grunt</span>
+$ npm install grunt --save-dev</code></pre>
+          <pre><code class="language-bash"><span class="comment"># Installer un plugin pour Grunt</span>
+$ npm install &lt;module&gt; --save-dev</code></pre>
+          <p>Si le fichier <code>package.json</code> liste déjà des modules, il suffira juste d&#39;un simple :</p>
+          <pre><code class="language-bash">$ npm install</code></pre>
+        </section>
+        <section>
+          <h3 id="gruntfile-js-1-2-">Gruntfile.js (1/2)</h3>
+          <p>C&#39;est un fichier JavaScript qui va contenir la configuration de toutes les taches que l&#39;on pourra utiliser sur le projet.</p>
+          <p>Chaque tache peut ensuite être appelé via la ligne de commande:</p>
+          <pre><code class="language-bash">$ grunt &lt;tache&gt;</code></pre>
+        </section>
+        <section>
+          <h3 id="gruntfile-js-2-2-">Gruntfile.js (2/2)</h3>
+          <pre><code class="language-javascript">module.exports = <span class="function"><span class="keyword">function</span><span class="params">(grunt)</span> {</span>
+  <span class="comment">// Configuration des taches.</span>
+  grunt.initConfig({
+    pkg: grunt.file.readJSON(<span class="string">'package.json'</span>),
+    <span class="comment">// configuration de la tache "copy"</span>
+    copy: {
+      <span class="comment">// Configuration de la sous-tache "copy:images"</span>
+      images: {
+        src : <span class="string">'**/*.{jpg,gif,png,svg}'</span>,
+        dest: <span class="string">'img/'</span>
+      }
+    }
+  });
+  <span class="comment">// Charger le plugin qui fourni la tache "copy".</span>
+  grunt.loadNpmTasks(<span class="string">'grunt-contrib-copy'</span>);
+  <span class="comment">// Définition de la tache par défaut.</span>
+  grunt.registerTask(<span class="string">'default'</span>, [<span class="string">'copy'</span>]);
+};</code></pre>
+        </section>
+        <section>
+          <h3 id="taches-utiles">Taches utiles</h3>
+          <ul>
+            <li>grunt-contrib-compass (ou grunt-contrib-sass)</li>
+            <li>grunt-contrib-connect</li>
+            <li>grunt-contrib-watch</li>
+            <li>assemble</li>
+            <li>Faites votre propre choix :
+              <a href="http://gruntjs.com/plugins">http://gruntjs.com/plugins</a>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3 id="assemble">Assemble</h3>
+          <p>Assemble est un plugin pour Grunt qui permet de faire de l&#39;inclusion de fichier, de la plus simple à la plus complexe. L&#39;idéal pour travailler sur des fraguements de code qui vont être assemblé en pages HTML complètes.</p>
+          <p>
+            <a href="http://assemble.io">http://assemble.io</a>
+          </p>
+        </section>
+        <section>
+          <h3 id="a-vous-de-jouer">A vous de jouer</h3>
+          <p>Merci !</p>
+        </section>
+      </div>
+    </div>
+    <script src="./js/head.min.js"></script>
+    <script src="./js/reveal.js"></script>
+    <script>
+      // Full list of configuration options available here:
+       // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+        // Optional libraries used to extend on reveal.js
+        dependencies: [{
+            src: './js/classList.js',
+            condition: function() {
+              return !document.body.classList;
+            }
+          }, {
+            src: './js/marked.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          }, {
+            src: './js/markdown.js',
+            condition: function() {
+              return !!document.querySelector('[data-markdown]');
+            }
+          } //,
+          // { src: './js/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+  </body>
+</html>
